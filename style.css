@@ -1,0 +1,206 @@
+/* Sikre at hele dokumentet tillater horisontal scrolling */
+html, body {
+    overflow-x: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0.5rem; /* Redusert padding */
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #e0ffff, #b0e0e6);
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Sikre at app-containeren tillater scrolling */
+#app {
+    width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+table, tr, th, td {
+    border: solid;
+    border-collapse: collapse;
+    padding: 3px; /* Redusert padding for å spare plass med stor skrift */
+}
+
+/* Input container */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; /* Mindre gap */
+    margin-bottom: 1rem;
+    padding: 0.8rem; /* Redusert padding */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Input fields - kun bredde beholdt */
+.input-field {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Save button */
+.save-button {
+    padding: 0.6rem 1.2rem; /* Redusert padding */
+    font-size: 1.2rem; /* Litt større font for konsistens */
+    background: linear-gradient(to right, #40e0d0, #20b2aa);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+    width: 100%; /* Full bredde for konsistens */
+}
+
+.save-button:hover {
+    background: linear-gradient(to right, #20b2aa, #40e0d0);
+    transform: scale(1.05);
+}
+
+/* Table container */
+.table-container {
+    overflow-x: auto; /* Tillater horisontal scrolling for brede tabeller */
+    padding: 0.8rem; /* Redusert padding */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch; /* Forbedrer scrolling på iOS */
+}
+
+/* Table styling */
+.item-table {
+    width: 100%;
+    max-width: 100%; /* Hindrer tabellen i å vokse utover containeren */
+    border-collapse: collapse;
+    table-layout: auto; /* Lar kolonnene tilpasse seg innhold */
+}
+
+/* Table header */
+.table-header th {
+    background: linear-gradient(to right, #40e0d0, #b0e0e6);
+    color: #333;
+    padding: 0.4rem; /* Redusert padding for stor skrift */
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #20b2aa;
+    font-size: 30px; /* Stor skrift for overskrifter */
+    white-space: nowrap; /* Hindrer tekstbryting i overskrifter */
+}
+
+/* Table rows */
+.table-row {
+    transition: background 0.3s ease;
+    background: hsl(calc(160 + var(--row-index) * 10), 70%, 90%);
+}
+
+.table-row:nth-child(even) {
+    background: hsl(calc(160 + var(--row-index) * 10), 60%, 85%);
+}
+
+.table-row td {
+    padding: 0.4rem; /* Redusert padding for stor skrift */
+    border-bottom: 1px solid #e0ffff;
+    font-size: 30px; /* Stor skrift for alle celler */
+    white-space: nowrap; /* Hindrer tekstbryting for de fleste celler */
+}
+
+/* Spesifikt for Vare-kolonnen (andre kolonne) */
+.table-row td:nth-child(2) {
+    white-space: normal; /* Tillater tekstbryting for lange varenavn */
+}
+
+/* Table footer */
+.table-footer td {
+    padding: 0.4rem; /* Redusert padding */
+    font-weight: bold;
+    background: linear-gradient(to right, #b0e0e6, #e0ffff);
+    font-size: 24px; /* Litt mindre skrift for footer */
+}
+
+/* Custom checkbox */
+.custom-checkbox {
+    width: 1.4rem; /* Litt større checkbox for mobil */
+    height: 1.4rem;
+    cursor: pointer;
+    accent-color: #ff8c00;
+}
+
+/* Buttons in table */
+.edit-button, .save-edit-button, .delete-button {
+    padding: 0.4rem 0.8rem; /* Redusert padding */
+    font-size: 1.1rem; /* Litt større font for knapper */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.edit-button {
+    background: #40e0d0;
+    color: white;
+}
+
+.edit-button:hover {
+    background: #20b2aa;
+    transform: scale(1.05);
+}
+
+.save-edit-button {
+    background: #ff8c00;
+    color: white;
+}
+
+.save-edit-button:hover {
+    background: #e07b00;
+    transform: scale(1.05);
+}
+
+.delete-button {
+    background: #ff4500;
+    color: white;
+}
+
+.delete-button:hover {
+    background: #cc3700;
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .item-table {
+        font-size: 0.8rem; /* Standard font for ikke-tabell elementer */
+    }
+
+    .table-row td, .table-header th {
+        padding: 0.3rem; /* Enda mindre padding */
+        font-size: 24px; /* Litt mindre skrift på små skjermer */
+    }
+
+    .table-row td:nth-child(2) {
+        white-space: normal; /* Tillater tekstbryting for varenavn */
+    }
+
+    .table-footer td {
+        font-size: 20px; /* Litt mindre for footer på små skjermer */
+    }
+
+    .save-button {
+        font-size: 1rem; /* Litt mindre font */
+    }
+
+    .custom-checkbox {
+        width: 1.2rem; /* Litt mindre checkbox */
+        height: 1.2rem;
+    }
+
+    .edit-button, .save-edit-button, .delete-button {
+        padding: 0.3rem 0.6rem; /* Redusert padding */
+        font-size: 1rem; /* Litt mindre font */
+    }
+}
