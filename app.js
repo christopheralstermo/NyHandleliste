@@ -35,7 +35,6 @@ function theFrontPageView() {
             <th>Vare</th>
             <th>Antall</th>
             <th>Pris pr</th>
-            <th-Packard
             <th>Total sum</th>
             <th></th>
             <th></th>
@@ -198,6 +197,8 @@ function saveToLocalStorage() {
     // Lagrer listen til localStorage
     localStorage.setItem('handleListenMin', JSON.stringify(model.data.lista));
 }
+
+//localStorage.removeItem("handleListenMin");
 
 function loadFromLocalStorage() {
     // Laster listen fra localStorage
